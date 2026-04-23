@@ -36,7 +36,7 @@ def search_jobs():
                 "engine": "google_jobs",
                 "q": keyword,
                 "location": location,
-                "api_key": "3b043f7159f0b5870e3c77dc30e95c6bda64226d5a02f2abfa1e048a3cf44ab9"
+                "api_key": os.environ.get("SERPAPI_KEY")
             }
 
             response = requests.get(url, params=params)
@@ -59,8 +59,8 @@ def send_email(jobs, to_email):
         return
 
     # Email settings
-    from_email = "jo.aziba@gmail.com"
-    password = "sxssuclvfybcidtx"  # Use Gmail App Password
+    from_email = os.environ.get("EMAIL_ADDRESS")
+    password = os.environ.get("EMAIL_PASSWORD")  # Use Gmail App Password
 
     # Compose message
     subject = f"New Job Listings ({len(jobs)})"

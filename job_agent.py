@@ -9,7 +9,7 @@ from email.mime.multipart import MIMEMultipart
 # DATABASE SETUP
 # --------------------------
 import os
-conn = sqlite3.connect(os.path.expanduser("~/job_agent/jobs.db"))
+conn = sqlite3.connect("jobs.db")
 cursor = conn.cursor()
 
 cursor.execute("""

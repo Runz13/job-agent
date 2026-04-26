@@ -25,28 +25,28 @@ conn.commit()
 def search_jobs():
     url = "https://serpapi.com/search.json"
 
-    keywords = ["Service Transition Analyst", "Service Transition Manager"]
     locations = ["United Kingdom", "Luxembourg", "Canada"]
 
     all_jobs = []
 
-    for keyword in keywords:
-        for location in locations:
-            params = {
-                "engine": "google_jobs",
-                "q": keyword,
-                "location": location,
-                "api_key": os.environ.get("SERPAPI_KEY")
-            }
+ query = "Service Transition Analyst OR Service Transition Manager"
 
-            response = requests.get(url, params=params)
-            data = response.json()
+    for location in locations:
+        params = {
+            "engine": "google_jobs",
+            "q": query,
+            "location": location,
+            "api_key": os.environ.get("SERPAPI_KEY")
+        }
 
-            print(f"\nDEBUG: Keyword='{keyword}', Location='{location}'")
-            print(data)  # Shows what the API returned
+        response = requests.get(url, params=params)
+        data = response.json()
 
-            jobs = data.get("jobs_results", [])
-            all_jobs.extend(jobs)
+        print(f"\nDEBUG: Query='{query}', Location='{location}'")
+        print(data)
+
+        jobs = data.get("jobs_results", [])
+        all_jobs.extend(jobs)
 
     return all_jobs
 

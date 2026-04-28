@@ -29,7 +29,7 @@ def search_jobs():
 
     all_jobs = []
 
- query = "Service Transition Analyst OR Service Transition Manager"
+    query = "Service Transition Analyst OR Service Transition Manager"
 
     for location in locations:
         params = {

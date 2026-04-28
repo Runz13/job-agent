@@ -49,7 +49,6 @@ def search_jobs():
         all_jobs.extend(jobs)
 
     return all_jobs
-
 # --------------------------
 # EMAIL FUNCTION
 # --------------------------
